@@ -10,6 +10,15 @@ namespace Common.Config
         [JsonProperty(Required = Required.Always)]
         public string Project { get; set; }
 
+        [JsonProperty(PropertyName = "username")]
+        public string Username { get; set; }
+
+        [JsonProperty(PropertyName = "password")]
+        public string Password { get; set; }
+
+       [JsonProperty(PropertyName = "domain")]
+        public string Domain { get; set; }
+
         [JsonProperty(PropertyName = "access-token", Required = Required.DisallowNull)]
         public string AccessToken { get; set; }
 

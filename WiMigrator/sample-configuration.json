@@ -2,6 +2,9 @@
   "source-connection": {
     "account": "https://dev.azure.com/fabrikam",
     "project": "fabricam-project",
+    "username": "usename",
+    "password": "password",
+    "domain": "carefusion",
     "access-token": "surf54m2is4yict2sdsdsdsdsdsewrcn4jolgprjmr4rjq",
     "use-integrated-auth": "false"
   },
