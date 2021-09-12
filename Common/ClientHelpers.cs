@@ -6,6 +6,7 @@ using System.Reflection;
 using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Net;
 using Microsoft.Extensions.DependencyModel;
 using Microsoft.Extensions.Logging;
 using Microsoft.TeamFoundation.WorkItemTracking.WebApi;
@@ -29,6 +30,14 @@ namespace Common
             if (connection.UseIntegratedAuth)
             {
                 credentials = new VssCredentials(true);
+            }
+            else if (connection.Password != null)
+            {
+                NetworkCredential netCred = new NetworkCredential(connection.Username, connection.Password, connection.Domain);
+                Microsoft.VisualStudio.Services.Common.WindowsCredential winCred = new Microsoft.VisualStudio.Services.Common.WindowsCredential(netCred);
+                credentials = new VssCredentials(winCred);
+
+                credentials.PromptType = CredentialPromptType.DoNotPrompt;
             }
             else
             {
